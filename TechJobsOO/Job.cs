@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace TechJobsOO
 {
@@ -31,12 +32,20 @@ namespace TechJobsOO
 
         public override string ToString()
         {
-            return 
-                $"ID: {Name}\n" +
-                $"Name: {EmployerName.Value}\n" +
-                $"Location: {EmployerLocation.Value}\n" +
-                $"Position Type: {JobType.Value}\n" +
-                $"Core Competency: {JobCoreCompetency.Value}";
+            if (Name == null || EmployerName == null || EmployerLocation == null || JobType == null || JobCoreCompetency == null)
+            {
+                return "OOPS! This job does not seem to exist.";
+            }
+
+            string output = "";
+            output += $"ID: {Id}\n";
+            output += Name == "" ? "Name: Data not available\n" : $"Name: {Name}\n";
+            output += EmployerName.Value == "" ? "Employer: Data not available\n" : $"Employer: {EmployerName}\n";
+            output += EmployerLocation.Value == "" ? "Location: Data not available\n" : $"Location: {EmployerLocation}\n";
+            output += JobType.Value == "" ? "Position Type: Data not available\n" : $"Position Type: {JobType}\n";
+            output += JobCoreCompetency.Value == "" ? "Core Competency: Data not available" : $"Core Competency: {JobCoreCompetency}";
+
+            return output;
         }
 
         public override bool Equals(object obj)
