@@ -41,5 +41,20 @@ namespace TechJobsTests
             Assert.AreEqual(5, testJob1.Id);
         }
 
+        [TestMethod]
+        public void TestJobsToString()
+        {
+            Job testJob = new("Product Tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+            string correctResult =
+                "ID: Product Tester\n" +
+                "Name: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence";
+
+            string testResult = testJob.ToString();
+            
+            Assert.AreEqual(correctResult, testResult);
+        }
     }
 }

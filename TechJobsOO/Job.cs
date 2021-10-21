@@ -29,6 +29,16 @@ namespace TechJobsOO
             JobCoreCompetency = jobCoreCompetency;
         }
 
+        public override string ToString()
+        {
+            return 
+                $"ID: {Name}\n" +
+                $"Name: {EmployerName.Value}\n" +
+                $"Location: {EmployerLocation.Value}\n" +
+                $"Position Type: {JobType.Value}\n" +
+                $"Core Competency: {JobCoreCompetency.Value}";
+        }
+
         public override bool Equals(object obj)
         {
             return obj is Job job &&
