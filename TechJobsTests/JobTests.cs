@@ -45,7 +45,7 @@ namespace TechJobsTests
         {
             Job testJob1 = new("Product Tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-            Assert.IsFalse(testJob1.Id == defaultTestJob.Id);
+            Assert.IsFalse(defaultTestJob.Equals(testJob1));
         }
 
         [TestMethod]
