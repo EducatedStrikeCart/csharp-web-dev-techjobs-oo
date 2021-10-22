@@ -10,13 +10,12 @@ namespace TechJobsOO
         public override bool Equals(object obj)
         {
             return obj is PositionType type &&
-                   Id == type.Id &&
-                   Value == type.Value;
+                   Id == type.Id;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id, Value);
+            return HashCode.Combine(Id);
         }
     }
 }
