@@ -22,8 +22,6 @@ namespace TechJobsOO
             {
                 Console.WriteLine(job);
             }
-
-            Console.WriteLine(jobs[2].EmployerLocation.Id);
         }
     }
 }

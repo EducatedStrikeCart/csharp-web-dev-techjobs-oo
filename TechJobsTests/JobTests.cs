@@ -8,23 +8,33 @@ namespace TechJobsTests
     [TestClass]
     public class JobTests
     {
+        /// <summary>
+        /// Resets the static integer nextId inside Job class to 1
+        /// </summary>
+        public static void CleanJobId()
+        {
+            typeof(Job)
+                .GetField("nextId", BindingFlags.Static | BindingFlags.NonPublic)
+                .SetValue(null, 1);
+        }
+
         Job defaultTestJob;
         [TestInitialize]
         public void InitDefaultTestJob()
         {
+            CleanJobId();
             defaultTestJob = new("Product Tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         }
 
         [TestMethod]
         public void TestJobIdBeginsWithOne() //This test must be run first
         {
-            Assert.AreEqual(2, defaultTestJob.Id); //This value is 2 because Id is static and defaultTestJob is initialized
+            Assert.AreEqual(1, defaultTestJob.Id);
         }
 
         [TestMethod]
         public void TestSettingJobId()
         {
-
             Job testJob1 = new();
 
             Assert.IsTrue(defaultTestJob.Id + 1 == testJob1.Id);
@@ -52,12 +62,12 @@ namespace TechJobsTests
         public void TestJobsToString()
         {
             string correctResult =
-                "ID: 5\n" +
+                "ID: 1\n" +
                 "Name: Product Tester\n" +
                 "Employer: ACME\n" +
                 "Location: Desert\n" +
                 "Position Type: Quality control\n" +
-                "Core Competency: Persistence";
+                "Core Competency: Persistence\n";
 
             string testResult = defaultTestJob.ToString();
 
@@ -80,12 +90,12 @@ namespace TechJobsTests
         {
             Job testJob = new("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
             string correctResult =
-                "ID: 7\n" +
+                "ID: 2\n" +
                 "Name: Data not available\n" +
                 "Employer: Data not available\n" +
                 "Location: Data not available\n" +
                 "Position Type: Data not available\n" +
-                "Core Competency: Data not available";
+                "Core Competency: Data not available\n";
 
             string testResult = testJob.ToString();
 

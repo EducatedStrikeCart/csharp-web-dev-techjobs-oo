@@ -43,7 +43,7 @@ namespace TechJobsOO
             output += EmployerName.Value == "" ? "Employer: Data not available\n" : $"Employer: {EmployerName}\n";
             output += EmployerLocation.Value == "" ? "Location: Data not available\n" : $"Location: {EmployerLocation}\n";
             output += JobType.Value == "" ? "Position Type: Data not available\n" : $"Position Type: {JobType}\n";
-            output += JobCoreCompetency.Value == "" ? "Core Competency: Data not available" : $"Core Competency: {JobCoreCompetency}";
+            output += JobCoreCompetency.Value == "" ? "Core Competency: Data not available\n" : $"Core Competency: {JobCoreCompetency}\n";
 
             return output;
         }
